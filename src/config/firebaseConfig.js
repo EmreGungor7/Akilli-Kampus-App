@@ -1,22 +1,18 @@
-// src/config/firebaseConfig.js
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-// Firebase bilgileri
+// API Anahtarlarını .env dosyasından çekiyoruz
 const firebaseConfig = {
-  apiKey: "AIzaSyB3oTHjlVabCGt7YzwR2VwQqN_hJ1JEdbI",
-  authDomain: "akillikampus-25.firebaseapp.com",
-  projectId: "akillikampus-25",
-  storageBucket: "akillikampus-25.firebasestorage.app",
-  messagingSenderId: "622390549074",
-  appId: "1:622390549074:web:86dea5348c7808a2339d8b",
-  measurementId: "G-YV3JRVHSRV"
+  apiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.EXPO_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.EXPO_PUBLIC_FIREBASE_APP_ID
 };
 
-// Uygulamayı başlat
 const app = initializeApp(firebaseConfig);
 
-// Diğer dosyalarda kullanmak için Auth ve Veritabanını dışarı aktarıyoruz
 export const auth = getAuth(app);
 export const db = getFirestore(app);
